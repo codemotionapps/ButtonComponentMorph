@@ -157,17 +157,7 @@
 				var docElem = window.document.documentElement, didScroll, scrollPosition;
 				function onBeforeOpen(toggleFn, that){
 					if(!$scope.$parent.$parent.$eval($scope.eval)) return false;
-					if($attrs.kanban == "true"){
-						$scope.$parent.$parent.$parent.$parent.$parent.$parent.$parent.morphed = {
-							fn: toggleFn,
-							that: that
-						};
-					}else{
-						$scope.$parent.$parent.$parent.$parent.$parent.morphed = {
-							fn: toggleFn,
-							that: that
-						};
-					}
+					$scope.morph(toggleFn, that);
 					noScroll();
 					return true;
 				}
