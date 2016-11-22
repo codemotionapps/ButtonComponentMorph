@@ -222,6 +222,7 @@
 								onAfterClose : canScroll
 							}
 						);
+						//TODO: DESTRUCT
 					}
 				}
 				$scope.morphClose = "";
@@ -235,15 +236,17 @@
 				morphTrigger: "@",
 				morphEval: "@"
 			},
-			require: "^morph",
+			require: "^?morph",
 			link: function(scope, el, attrs, morphController){
+				if(!morphController) return;
 				morphController.morphDOMReady(el, scope.morphTrigger, scope.morphEval, scope);
 			}
 		};
 	}).directive("morphSection", function($window){
 		return {
-			require: "^morph",
+			require: "^?morph",
 			link: function(scope, el, attrs, morphController){
+				if(!morphController) return;
 				scope.morphSection = el;
 				morphController.morphDOMReady();
 			}
