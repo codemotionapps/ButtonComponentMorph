@@ -163,7 +163,8 @@
 				}
 				
 				function onAfterOpen(){
-					$scope.$parent.$parent.$eval($scope.evalAfter);
+					$scope.$eval($scope.evalAfter);
+					$scope[$attrs.morphTo]($element[0]);
 					canScroll();
 				}
 				
