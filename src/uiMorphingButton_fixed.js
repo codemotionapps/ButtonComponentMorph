@@ -60,7 +60,9 @@
 		if(this.isAnimating) return false;
 		this.contentEl.css('width', this.button[0].offsetWidth + "px");
 		this.contentEl.css('height', this.button[0].offsetHeight + "px");
-
+		var buttonPos = this.button[0].getBoundingClientRect();
+		this.contentEl.css('left', buttonPos.left + 'px');
+		this.contentEl.css('top', buttonPos.top + 'px');
 		// callback
 		if(this.expanded){
 			this.options.onBeforeClose();
@@ -104,25 +106,13 @@
 			onEndTransitionFn();
 		}
 
-		// set the left and top values of the contentEl (same like the button)
-		var buttonPos = this.button[0].getBoundingClientRect();
-		// need to reset
-		this.contentEl.addClass('no-transition');
-		this.contentEl.css('left', 'auto');
-		this.contentEl.css('top', 'auto');
-
-		// add/remove class "open" to the button wraper
-		setTimeout( function() { 
-			self.contentEl.css('left', buttonPos.left + 'px');
-			self.contentEl.css('top', buttonPos.top + 'px');
+		setTimeout( function() {
 
 			if( self.expanded ) {
-				self.contentEl.removeClass('no-transition');
 				self.el.removeClass('open');
 			}
 			else {
-				setTimeout( function() { 
-					self.contentEl.removeClass('no-transition');
+				setTimeout( function() {
 					self.el.addClass('open'); 
 				}, 25 );
 			}
