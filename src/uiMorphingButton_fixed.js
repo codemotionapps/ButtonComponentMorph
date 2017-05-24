@@ -233,7 +233,7 @@
 				morphController.morphDOMReady(el, scope.morphTrigger, scope.morphEval, scope);
 			}
 		};
-	}).directive("morphSection", function($window){
+	}).directive("morphSection", ["$window", function($window){
 		return {
 			require: "^?morph",
 			link: function(scope, el, attrs, morphController){
@@ -242,7 +242,7 @@
 				morphController.morphDOMReady();
 			}
 		}
-	});
+	}]);
 //	.directive("morphCloseButton", function(){
 //		return {
 //			require: "^morph",
